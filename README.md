@@ -8,7 +8,7 @@ This is a stripped down version of https://github.com/kreativekorp/barcode inspi
 Install via composer:
 
 ```
-composer require php-qrcode
+composer require splitbrain/php-qrcode
 ```
 
 Usage:
