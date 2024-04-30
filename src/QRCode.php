@@ -71,15 +71,17 @@ class QRCode
     {
         $code = $this->dispatch_encode($this->data, $this->options);
         $svg = sprintf('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 %d %d">', $code['s'][0], $code['s'][1]);
+        $path = '<path d="';
         foreach ($code['b'] as $y => $row) {
             foreach ($row as $x => $val) {
                 if ($val) {
-                    $svg .= sprintf('<rect x="%d" y="%d" width="1" height="1" />', $x, $y);
+                    $path .= sprintf("M%d,%d L%d,%d %d,%d %d,%d Z ", $x, $y, ($x+1), $y, ($x+1), ($y+1), $x, ($y+1)); 
                 }
             }
         }
+        $path .= '" fill="black" />';
+        $svg .= $path;
         $svg .= '</svg>';
-
         return $svg;
     }
 
